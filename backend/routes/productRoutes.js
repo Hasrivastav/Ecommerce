@@ -1,10 +1,10 @@
 const express =require("express");
 const { getAllProducts,createproduct,updateProduct,deleteProduct,getProductDetails} = require("../controllers/productController");
-
+const isAuthenticatedUser = require("../middleware/auth")
 const router=express.Router();
 
 
-router.route("/productss").get(getAllProducts);
+router.route("/productss").get( isAuthenticatedUser , getAllProducts);
 
 router.route("/product/new").post(createproduct);
 
